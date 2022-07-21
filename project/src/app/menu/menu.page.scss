@@ -1,0 +1,17 @@
+$text-default: #fff;
+$text-active: #fbb6d5;
+$wall-default: #9d6c82;
+$wall-active: #ec1e79;
+
+ion-toolbar.menu-toolbar {
+  --background: $wall-active;
+  background-color: $wall-active;
+}
+
+#menu-icon {
+  fill: $text-default;
+}
+
+ion-title.paganame {
+  color: $text-default;
+}

@@ -1,9 +1,17 @@
 <ion-content>
-  <ion-toolbar>
-    <ion-title>
-      ignore me
-    </ion-title>
-  </ion-toolbar>
+  <ion-header>
+    <ion-toolbar class="menu-toolbar">
+      <ion-buttons slot="start">
+        <ion-button (click)="toggleMenu()">
+          <ion-icon slot="icon-only" name="menu-sharp" id="menu-icon"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+
+      <ion-title class="paganame">
+        login
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
 
   HELLO
   <ion-button color="danger">login</ion-button>

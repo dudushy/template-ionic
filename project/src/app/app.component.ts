@@ -11,14 +11,11 @@ import { MenuController } from '@ionic/angular';
 })
 export class AppComponent {
   theme: boolean;
-  pagename: string;
 
   constructor(
     private router: Router,
     private menu: MenuController
-  ) {
-    this.pagename = null;
-  }
+  ) { }
 
   ngOnInit() {
     console.log("init 'app.component'");
@@ -28,7 +25,7 @@ export class AppComponent {
     console.log("redirect -> " + url);
     this.router.navigateByUrl('/' + url);
 
-    this.pagename = url;
+    this.toggleMenu();
   }
 
   toggleMenu() {

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { MenuController } from '@ionic/angular';
 @Component({
   selector: 'app-test',
   templateUrl: './test.page.html',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private menu: MenuController
+  ) { }
 
   ngOnInit() {
+    console.log("init 'test'");
   }
 
+  toggleMenu() {
+    this.menu.enable(true, 'mainMenu');
+    this.menu.toggle('mainMenu');
+  }
 }
