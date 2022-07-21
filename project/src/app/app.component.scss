@@ -1,0 +1,40 @@
+$text-default: #fff;
+$text-active: #fbb6d5;
+$wall-default: #9d6c82;
+$wall-active: #ec1e79;
+
+ion-toolbar.menu-toolbar {
+  --background: $wall-active;
+}
+
+ion-title.paganame {
+  text-align: center;
+  padding-bottom: .5em;
+}
+
+ion-title.projectname {
+  text-align: center;
+  padding-bottom: .5em;
+}
+
+ion-grid.user-grid {
+  text-align: center;
+}
+
+#user-icon {
+  font-size: 5em;
+}
+
+#user-name {
+  color: $wall-active;
+}
+
+ion-item.pageButton {
+  background-color: $wall-default !important;
+  color: $text-default;
+}
+
+ion-item.pageButton:hover:active {
+  background-color: $wall-active !important;
+  color: $text-active;
+}
