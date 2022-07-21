@@ -28,11 +28,12 @@ echo ""
 npm init @eslint/config
 
 echo ""
-echo "[steps.sh] generate pages (login, menu, settings)"
+echo "[steps.sh] generate pages (login, menu, settings, test)"
 echo ""
 ionic g page login
 ionic g page menu
 ionic g page settings
+ionic g page test
 
 echo "----------------------"
 echo "- [steps.sh] FINISHED -"
