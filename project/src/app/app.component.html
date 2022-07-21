@@ -5,7 +5,7 @@
       <ion-toolbar class="menu-toolbar">
         <ion-buttons slot="start">
           <ion-button (click)="toggleMenu()">
-            <ion-icon slot="icon-only" name="menu-outline"></ion-icon>
+            <ion-icon slot="icon-only" name="menu-sharp" id="menu-icon"></ion-icon>
           </ion-button>
         </ion-buttons>
 
@@ -40,15 +40,31 @@
           <hr>
 
           <ion-item>
-            <ion-label class="pageButton">Menu</ion-label>
-          </ion-item>
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <ion-label class="pageButton" (click)="redirectTo('login')">Login</ion-label>
+                </ion-col>
+              </ion-row>
 
-          <ion-item>
-            <ion-label class="pageButton">Settings</ion-label>
-          </ion-item>
+              <ion-row>
+                <ion-col>
+                  <ion-label class="pageButton" (click)="redirectTo('menu')">Menu</ion-label>
+                </ion-col>
+              </ion-row>
 
-          <ion-item>
-            <ion-label class="pageButton">Test</ion-label>
+              <ion-row>
+                <ion-col>
+                  <ion-label class="pageButton" (click)="redirectTo('settings')">Settings</ion-label>
+                </ion-col>
+              </ion-row>
+
+              <ion-row>
+                <ion-col>
+                  <ion-label class="pageButton" (click)="redirectTo('test')">Test</ion-label>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
           </ion-item>
 
         </ion-list>

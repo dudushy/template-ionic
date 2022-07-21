@@ -5,14 +5,21 @@ $wall-active: #ec1e79;
 
 ion-toolbar.menu-toolbar {
   --background: $wall-active;
+  background-color: $wall-active;
+}
+
+#menu-icon {
+  fill: $text-default;
 }
 
 ion-title.paganame {
+  color: $text-default;
   text-align: center;
   padding-bottom: .5em;
 }
 
 ion-title.projectname {
+  color: $text-default;
   text-align: center;
   padding-bottom: .5em;
 }
@@ -29,12 +36,21 @@ ion-grid.user-grid {
   color: $wall-active;
 }
 
-ion-item.pageButton {
-  background-color: $wall-default !important;
-  color: $text-default;
+hr {
+  padding: .2em;
+  background-color: $wall-default;
+  border-radius: 30px;
 }
 
-ion-item.pageButton:hover:active {
+.pageButton {
+  background-color: $wall-default !important;
+  color: $text-default;
+  padding: .5em;
+  // margin-left: 1em;
+  border-radius: 10px;
+}
+
+.pageButton:hover:active {
   background-color: $wall-active !important;
   color: $text-active;
 }
