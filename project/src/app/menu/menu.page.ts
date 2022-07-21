@@ -7,10 +7,17 @@ import { MenuController } from '@ionic/angular';
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
+  buttonPressed: string;
 
   constructor(
     private menu: MenuController
-  ) { }
+  ) {
+    this.buttonPressed = null;
+  }
+
+  youPressed(buttonName) {
+    this.buttonPressed = buttonName;
+  }
 
   ngOnInit() {
     console.log("init 'menu'");
