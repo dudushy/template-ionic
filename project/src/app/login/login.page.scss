@@ -9,6 +9,14 @@ ion-toolbar.menu-toolbar {
   background-color: $wall-active;
 }
 
+#img-icon {
+  margin: auto;
+  height: 2.5em;
+  width: 2.5em;
+  margin-top: 1em;
+  margin-bottom: -.8em;
+}
+
 #menu-icon {
   fill: $text-default;
 }
@@ -17,7 +25,7 @@ ion-title.paganame {
   color: $text-default;
 }
 
-h4 {
+h5 {
   color: $text-default;
 }
 
@@ -44,30 +52,32 @@ ion-grid.login-grid:after {
 }
 
 .login-title {
+  justify-content: center;
   text-align: center;
   background-color: $wall-active;
   padding: .3em;
   border-radius: 10px;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 
 .email-list {
   background-color: $text-active;
   padding: .3em;
   border-radius: 10px;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 
 .password-list {
   background-color: $text-active;
   padding: .3em;
   border-radius: 10px;
-  margin-bottom: 1em;
+  margin-bottom: .5em;
 }
 
 .remember-list {
   background-color: $wall-active;
   padding: .3em;
+  margin-bottom: .2em;
   border-radius: 10px;
 }
 
