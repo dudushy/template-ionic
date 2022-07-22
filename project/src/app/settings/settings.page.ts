@@ -27,6 +27,7 @@ export class SettingsPage implements OnInit {
 
     localStorage.setItem("theme", "false");
     document.body.setAttribute("theme", "light");
+    this.theme = false;
   }
 
   toggleMenu() {
