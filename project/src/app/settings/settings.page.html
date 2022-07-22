@@ -19,5 +19,7 @@
       <ion-label>Dark Theme</ion-label>
       <ion-toggle color="medium" [(ngModel)]="theme" (ionChange)="toggleTheme()"></ion-toggle>
     </ion-item>
+
+    <ion-button color="danger" expand="block" (click)="eraseStorage()">erase storage</ion-button>
   </ion-list>
 </ion-content>

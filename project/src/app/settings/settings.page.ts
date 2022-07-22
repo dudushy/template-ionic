@@ -20,6 +20,15 @@ export class SettingsPage implements OnInit {
     this.loadTheme();
   }
 
+  eraseStorage() {
+    localStorage.setItem('rememberLogin', null);
+    localStorage.setItem('login_email', null);
+    localStorage.setItem('login_password', null);
+
+    localStorage.setItem("theme", "false");
+    document.body.setAttribute("theme", "light");
+  }
+
   toggleMenu() {
     this.menu.enable(true, 'mainMenu');
     this.menu.toggle('mainMenu');
