@@ -2,6 +2,7 @@ $text-default: #fff;
 $text-active: #fbb6d5;
 $wall-default: #9d6c82;
 $wall-active: #ec1e79;
+$this-dark: #60203d;
 
 ion-toolbar.menu-toolbar {
   --background: $wall-active;
@@ -14,4 +15,83 @@ ion-toolbar.menu-toolbar {
 
 ion-title.paganame {
   color: $text-default;
+}
+
+h4 {
+  color: $text-default;
+}
+
+ion-grid.login-grid {
+  background-color: $wall-default;
+  position : relative;
+  padding-bottom: 5em;
+}
+
+ion-grid.login-grid:after {
+  content  : "";
+  position : absolute;
+  z-index  : 1;
+  bottom   : 0;
+  left     : 0;
+  pointer-events   : none;
+  background-image : linear-gradient(
+    to bottom,
+    $wall-default,
+    #fff
+  );
+  width    : 100%;
+  height   : 4em;
+}
+
+.login-title {
+  text-align: center;
+  background-color: $wall-active;
+  padding: .3em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.email-list {
+  background-color: $text-active;
+  padding: .3em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.password-list {
+  background-color: $text-active;
+  padding: .3em;
+  border-radius: 10px;
+  margin-bottom: 1em;
+}
+
+.remember-list {
+  background-color: $wall-active;
+  padding: .3em;
+  border-radius: 10px;
+}
+
+ion-item.remember {
+  background-color: $wall-active;
+  --background-color: $wall-active;
+}
+
+.label-text {
+  color: $wall-active;
+  font-weight: bold;
+  margin-left: .5em;
+}
+
+.password-peek {
+  background-color: $text-active;
+  padding: .4em;
+  margin: .2em;
+  font-size: 24px;
+  border-radius: 50px;
+  // height: 100%;
+  // width: 100%;
+}
+
+#login-icon {
+  fill: $this-dark;
 }
