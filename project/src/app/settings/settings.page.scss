@@ -2,6 +2,8 @@ $text-default: #fff;
 $text-active: #fbb6d5;
 $wall-default: #9d6c82;
 $wall-active: #ec1e79;
+$alerts-cancel: #f15b5b;
+$alerts-accept: #7ef15b;
 
 ion-toolbar.menu-toolbar {
   --background: $wall-active;
@@ -14,4 +16,19 @@ ion-toolbar.menu-toolbar {
 
 ion-title.paganame {
   color: $text-default;
+}
+
+.alerts {
+  --color: $wall-active;
+  color: $wall-active;
+}
+
+.alerts-cancel {
+  --background: $alerts-cancel;
+  background-color: $alerts-cancel;
+}
+
+.alerts-accept {
+  --background: $alerts-accept;
+  background-color: $alerts-accept;
 }

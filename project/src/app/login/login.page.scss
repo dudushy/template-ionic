@@ -95,3 +95,8 @@ ion-item.remember {
 #login-icon {
   fill: $this-dark;
 }
+
+.alerts {
+  --color: $wall-active;
+  color: $wall-active;
+}

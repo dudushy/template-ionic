@@ -25,7 +25,7 @@ export class LoginPage implements OnInit {
     private menu: MenuController,
     public platform: Platform,
     private router: Router,
-    public alertController: AlertController,
+    public alertController: AlertController
   ) {
     this.rememberLogin = localStorage.getItem('rememberLogin');
 

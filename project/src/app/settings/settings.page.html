@@ -20,6 +20,6 @@
       <ion-toggle color="medium" [(ngModel)]="theme" (ionChange)="toggleTheme()"></ion-toggle>
     </ion-item>
 
-    <ion-button color="danger" expand="block" (click)="eraseStorage()">erase storage</ion-button>
+    <ion-button color="danger" expand="block" (click)="eraseStorage('Warning', 'Do you agree to erase all storage data?')">erase storage</ion-button>
   </ion-list>
 </ion-content>
