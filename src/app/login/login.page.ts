@@ -34,18 +34,18 @@ export class LoginPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("init 'login'");
+    console.log('init "login"');
   }
 
   ionViewDidEnter() {
     this.platform.ready().then((readySource) => {
-      console.log("enter 'login' -", readySource);
+      console.log('enter "login" -', readySource);
 
-      console.log("rememberLogin", this.rememberLogin);
-      console.log("checkbox_rememberLogin", this.checkbox_rememberLogin);
+      console.log('rememberLogin', this.rememberLogin);
+      console.log('checkbox_rememberLogin', this.checkbox_rememberLogin);
 
       if (localStorage.getItem('rememberLogin') == 'true') {
-        this.checkbox_rememberLogin = "true";
+        this.checkbox_rememberLogin = 'true';
         this.login_email = localStorage.getItem('login_email');
         this.login_password = localStorage.getItem('login_password');
 
@@ -55,37 +55,37 @@ export class LoginPage implements OnInit {
   }
 
   login() {
-    console.log("checkbox_rememberLogin", this.checkbox_rememberLogin);
+    console.log('checkbox_rememberLogin', this.checkbox_rememberLogin);
 
-    console.log("login_email", this.login_email);
-    console.log("login_password", this.login_password);
+    console.log('login_email', this.login_email);
+    console.log('login_password', this.login_password);
 
-    if ((this.login_email == null || this.login_email == "") && (this.login_password == null || this.login_password == "")) {
+    if ((this.login_email == null || this.login_email == '') && (this.login_password == null || this.login_password == '')) {
       this.showAlert('Login', 'No data provided!');
-      return
+      return;
 
-    } else if (this.login_email == null || this.login_email == "") {
+    } else if (this.login_email == null || this.login_email == '') {
       this.showAlert('Login', 'E-mail not provided!');
-      return
+      return;
 
-    } else if (this.login_password == null || this.login_password == "") {
+    } else if (this.login_password == null || this.login_password == '') {
       this.showAlert('Login', 'Password not provided!');
-      return
+      return;
     }
 
     if (this.checkbox_rememberLogin) {
-      localStorage.setItem('rememberLogin', "true");
-      console.log("rememberLogin", localStorage.getItem('rememberLogin'));
+      localStorage.setItem('rememberLogin', 'true');
+      console.log('rememberLogin', localStorage.getItem('rememberLogin'));
     } else {
-      localStorage.setItem('rememberLogin', "false");
-      console.log("rememberLogin", localStorage.getItem('rememberLogin'));
+      localStorage.setItem('rememberLogin', 'false');
+      console.log('rememberLogin', localStorage.getItem('rememberLogin'));
     }
 
-    localStorage.setItem("login_email", this.login_email);
-    localStorage.setItem("login_password", this.login_password);
+    localStorage.setItem('login_email', this.login_email);
+    localStorage.setItem('login_password', this.login_password);
 
     this.showAlert('Login', 'Successfully logged in!');
-    this.redirectTo("menu");
+    this.redirectTo('menu');
   }
 
   async showAlert(topic: string, msg: string) {
@@ -103,25 +103,25 @@ export class LoginPage implements OnInit {
   }
 
   togglePasswordPeek(event: any) {
-    console.log("event.target.attributes[2].nodeValue", event.target.attributes[2].nodeValue);
+    console.log('event.target.attributes[2].nodeValue', event.target.attributes[2].nodeValue);
 
     const oldIcon = event.target.attributes[2].nodeValue;
     const passwordInput = document.getElementById('login_password');
 
-    if (oldIcon == "eye") {
-      event.target.attributes[2].nodeValue = "eye-off";
-      passwordInput['type'] = "text";
+    if (oldIcon == 'eye') {
+      event.target.attributes[2].nodeValue = 'eye-off';
+      passwordInput['type'] = 'text';
     }
-    if (oldIcon == "eye-off") {
-      event.target.attributes[2].nodeValue = "eye";
-      passwordInput['type'] = "password";
+    if (oldIcon == 'eye-off') {
+      event.target.attributes[2].nodeValue = 'eye';
+      passwordInput['type'] = 'password';
     }
 
-    console.log(oldIcon + " -> " + event.target.attributes[2].nodeValue);
+    console.log(oldIcon + ' -> ' + event.target.attributes[2].nodeValue);
   }
 
   redirectTo(url: string) {
-    console.log("redirect -> " + url);
+    console.log('redirect -> ' + url);
     this.router.navigateByUrl('/' + url);
   }
 

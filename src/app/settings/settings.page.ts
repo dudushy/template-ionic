@@ -18,7 +18,7 @@ export class SettingsPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("init 'settings'");
+    console.log('init "settings"');
 
     this.loadTheme();
   }
@@ -47,8 +47,8 @@ export class SettingsPage implements OnInit {
             localStorage.setItem('login_email', null);
             localStorage.setItem('login_password', null);
 
-            localStorage.setItem("theme", null);
-            document.body.setAttribute("theme", "light");
+            localStorage.setItem('theme', null);
+            document.body.setAttribute('theme', 'light');
             this.theme = false;
           }
         }
@@ -67,7 +67,7 @@ export class SettingsPage implements OnInit {
   }
 
   loadTheme() {
-    if (localStorage.getItem("theme") == "true") {
+    if (localStorage.getItem('theme') == 'true') {
       this.theme = true;
     } else {
       this.theme = false;
@@ -77,14 +77,14 @@ export class SettingsPage implements OnInit {
   toggleTheme() {
     console.log(this.theme);
     if (this.theme) {
-      console.log("them: true");
-      localStorage.setItem("theme", "true");
-      document.body.setAttribute("theme", "dark");
+      console.log('them: true');
+      localStorage.setItem('theme', 'true');
+      document.body.setAttribute('theme', 'dark');
     } else {
-      console.log("theme: false");
-      localStorage.setItem("theme", "false");
-      document.body.setAttribute("theme", "light");
+      console.log('theme: false');
+      localStorage.setItem('theme', 'false');
+      document.body.setAttribute('theme', 'light');
     }
-    console.log("localStorage theme:", localStorage.getItem("theme"));
+    console.log('localStorage theme:', localStorage.getItem('theme'));
   }
 }

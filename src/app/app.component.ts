@@ -18,11 +18,11 @@ export class AppComponent {
   ) { }
 
   ngOnInit() {
-    console.log("init 'app.component'");
+    console.log('init "app.component"');
   }
 
   redirectTo(url: string) {
-    console.log("redirect -> " + url);
+    console.log('redirect -> ' + url);
     this.router.navigateByUrl('/' + url);
 
     this.toggleMenu();

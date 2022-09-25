@@ -13,7 +13,7 @@ export class TestPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    console.log("init 'test'");
+    console.log('init "test"');
   }
 
   toggleMenu() {

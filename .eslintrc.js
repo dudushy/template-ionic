@@ -16,5 +16,13 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
+        "quotes": [
+            "error",
+            "single"
+        ],
+        "semi": [
+            "error",
+            "always"
+        ]
     }
 }

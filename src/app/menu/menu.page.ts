@@ -20,7 +20,7 @@ export class MenuPage implements OnInit {
   }
 
   ngOnInit() {
-    console.log("init 'menu'");
+    console.log('init "menu"');
   }
 
   toggleMenu() {
