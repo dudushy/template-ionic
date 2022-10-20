@@ -1,13 +1,4 @@
-$text-default: #fff;
-$text-active: #fbb6d5;
-$wall-default: #9d6c82;
-$wall-active: #ec1e79;
-$this-dark: #60203d;
-
-ion-toolbar.menu-toolbar {
-  --background: $wall-active;
-  background-color: $wall-active;
-}
+@import "/src/theme/variables.scss";
 
 #img-icon {
   margin: auto;
@@ -15,14 +6,6 @@ ion-toolbar.menu-toolbar {
   width: 2.5em;
   margin-top: 1em;
   margin-bottom: -.8em;
-}
-
-#menu-icon {
-  fill: $text-default;
-}
-
-ion-title.paganame {
-  color: $text-default;
 }
 
 h5 {
