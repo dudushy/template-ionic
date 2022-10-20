@@ -19,7 +19,7 @@ Template for Ionic projects.
 ```ionic generate page PAGE_NAME```
 
 # Generate Service
-```ionic generate service services/SERVICE_NAME```
+```ionic generate service .services/SERVICE_NAME```
 
 # Add/Remove Platform
 ```ionic cordova platform add PLATFORM_NAME```
