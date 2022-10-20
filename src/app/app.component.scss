@@ -1,7 +1,8 @@
-$text-default: #fff;
-$text-active: #fbb6d5;
-$wall-default: #9d6c82;
-$wall-active: #ec1e79;
+@import "/src/theme/variables.scss";
+
+#main-content {
+  margin-top: 15%;
+}
 
 ion-toolbar.menu-toolbar {
   --background: $wall-active;
