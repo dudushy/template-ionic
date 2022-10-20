@@ -1,18 +1,4 @@
 <ion-content>
-  <ion-header>
-    <ion-toolbar class="menu-toolbar">
-      <ion-buttons slot="start">
-        <ion-button (click)="toggleMenu()">
-          <ion-icon slot="icon-only" name="menu-sharp" id="menu-icon"></ion-icon>
-        </ion-button>
-      </ion-buttons>
-
-      <ion-title class="paganame" slot="end">
-        settings
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-
   <ion-list>
     <ion-item>
       <ion-icon name="color-palette" slot="start"></ion-icon>
@@ -20,6 +6,9 @@
       <ion-toggle color="medium" [(ngModel)]="theme" (ionChange)="toggleTheme()"></ion-toggle>
     </ion-item>
 
-    <ion-button color="danger" expand="block" (click)="eraseStorage('Warning', 'Do you agree to erase all storage data?')">erase storage</ion-button>
+    <ion-button color="danger" expand="block"
+      (click)="eraseStorage('Warning', 'Do you agree to erase all storage data?')">
+      erase storage
+    </ion-button>
   </ion-list>
 </ion-content>
