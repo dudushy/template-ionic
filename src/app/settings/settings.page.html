@@ -1,9 +1,23 @@
+<ion-header>
+  <ion-toolbar class="menu-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="app.toggleMenu()">
+        <ion-icon name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title slot="end">
+      {{app.currentPage}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-list>
     <ion-item>
       <ion-icon name="color-palette" slot="start"></ion-icon>
       <ion-label>Dark Theme</ion-label>
-      <ion-toggle color="medium" [(ngModel)]="theme" (ionChange)="toggleTheme()"></ion-toggle>
+      <ion-toggle color="medium" [(ngModel)]="themeToggle" (ionChange)="toggleTheme()"></ion-toggle>
     </ion-item>
 
     <ion-button color="danger" expand="block"
