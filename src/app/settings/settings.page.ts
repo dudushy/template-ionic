@@ -1,8 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import { MenuController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+
+import { AppComponent } from '../app.component';
 
 import { AlertController } from '@ionic/angular';
+
+import { StorageService } from 'src/app/.services/storage.service';
 
 @Component({
   selector: 'app-settings',
@@ -10,17 +15,45 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./settings.page.scss'],
 })
 export class SettingsPage implements OnInit {
-  theme: boolean;
+  title = 'SettingsPage';
+  theme: any = 'dark';
+
+  themeToggle: any = true;
 
   constructor(
-    private menu: MenuController,
-    public alertController: AlertController
-  ) { }
+    public app: AppComponent,
+    public platform: Platform,
+    private cdr: ChangeDetectorRef,
+    public alertController: AlertController,
+    public storage: StorageService
+  ) {
+    console.log(`[${this.title}#constructor]`);
+  }
 
   ngOnInit() {
-    console.log('init "settings"');
+    console.log(`[${this.title}#ngOnInit]`);
+  }
 
-    this.loadTheme();
+  ionViewDidEnter() {
+    this.platform.ready().then((readySource) => {
+      console.log(`[${this.title}#ionViewDidEnter] platform.ready`, readySource);
+
+      this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+    });
+  }
+
+  defaultOrder() {
+    return 0;
+  }
+
+  updateView() {
+    console.log(`[${this.title}#updateView]`);
+    this.cdr.detectChanges();
+    this.app.updateView(this.title);
+  }
+
+  redirectTo(url: string) {
+    this.app.redirectTo(url, this.title);
   }
 
   async eraseStorage(topic: string, msg: string) {
@@ -34,22 +67,17 @@ export class SettingsPage implements OnInit {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
-            console.log('[eraseStorage] CANCEL');
+            console.log(`[${this.title}#eraseStorage] CANCEL`);
           }
         },
         {
           cssClass: 'alerts-accept',
           text: 'Accept',
           handler: () => {
-            console.log('[eraseStorage] ACCEPT');
+            console.log(`[${this.title}#eraseStorage] ACCEPT`);
 
-            localStorage.setItem('rememberLogin', null);
-            localStorage.setItem('login_email', null);
-            localStorage.setItem('login_password', null);
-
-            localStorage.setItem('theme', null);
-            document.body.setAttribute('theme', 'light');
-            this.theme = false;
+            localStorage.clear();
+            this.theme = 'dark';
           }
         }
       ]
@@ -58,33 +86,19 @@ export class SettingsPage implements OnInit {
     await alert.present();
 
     const { role } = await alert.onDidDismiss();
-    console.log('onDidDismiss resolved with role', role);
-  }
+    console.log(`[${this.title}#eraseStorage] role`, role);
 
-  toggleMenu() {
-    this.menu.enable(true, 'mainMenu');
-    this.menu.toggle('mainMenu');
-  }
-
-  loadTheme() {
-    if (localStorage.getItem('theme') == 'true') {
-      this.theme = true;
-    } else {
-      this.theme = false;
-    }
+    this.updateView();
   }
 
   toggleTheme() {
-    console.log(this.theme);
-    if (this.theme) {
-      console.log('them: true');
-      localStorage.setItem('theme', 'true');
-      document.body.setAttribute('theme', 'dark');
-    } else {
-      console.log('theme: false');
-      localStorage.setItem('theme', 'false');
-      document.body.setAttribute('theme', 'light');
-    }
-    console.log('localStorage theme:', localStorage.getItem('theme'));
+    console.log(`[${this.title}#toggleTheme] themeToggle`, this.themeToggle);
+    // this.themeToggle = !this.themeToggle;
+    this.themeToggle ? this.storage.set('theme', 'dark') : this.storage.set('theme', 'light');
+
+    this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+    console.log(`[${this.title}#toggleTheme] theme`, this.theme);
+
+    this.updateView();
   }
 }
