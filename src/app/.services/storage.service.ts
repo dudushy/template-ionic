@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
 export class StorageService {
   title = 'StorageService';
 
@@ -24,6 +25,7 @@ export class StorageService {
   }
 
   clear() {
+    console.log(`[${this.title}#clear]`);
     localStorage.clear();
   }
 }
