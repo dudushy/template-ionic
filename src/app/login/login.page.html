@@ -1,3 +1,17 @@
+<ion-header>
+  <ion-toolbar class="menu-toolbar">
+    <ion-buttons slot="start">
+      <ion-button (click)="app.toggleMenu()">
+        <ion-icon name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title slot="end">
+      {{app.currentPage}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
   <ion-grid class="login-grid">
     <ion-row color="primary" justify-content-center>
@@ -36,7 +50,7 @@
 
           <ion-list class="remember-list">
             <ion-item class="remember">
-              <ion-checkbox side="start" [(ngModel)]="checkbox_rememberLogin"></ion-checkbox>
+              <ion-checkbox side="start" [(ngModel)]="checkboxRememberLogin"></ion-checkbox>
               <ion-label side="start" class="label-text">Remember me</ion-label>
             </ion-item>
           </ion-list>
