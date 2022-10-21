@@ -1,5 +1,18 @@
 @import "/src/theme/variables.scss";
 
+ion-toolbar.menu-toolbar {
+  --background: $wall-active;
+  background-color: $wall-active;
+
+  ion-icon {
+    fill: $text-default;
+  }
+
+  ion-title {
+    color: $text-default;
+  }
+}
+
 .alerts {
   --color: $wall-active;
   color: $wall-active;
