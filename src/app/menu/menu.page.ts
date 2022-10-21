@@ -1,30 +1,59 @@
-import { Component, OnInit } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 
-import { MenuController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
+
+import { AppComponent } from '../app.component';
+
+import { StorageService } from 'src/app/.services/storage.service';
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.page.html',
   styleUrls: ['./menu.page.scss'],
 })
 export class MenuPage implements OnInit {
-  buttonPressed: string;
+  title = 'MenuPage';
+  theme: any = 'dark';
+
+  buttonPressed: any = null;
 
   constructor(
-    private menu: MenuController
+    public app: AppComponent,
+    public platform: Platform,
+    private cdr: ChangeDetectorRef,
+    public storage: StorageService
   ) {
-    this.buttonPressed = null;
-  }
-
-  youPressed(buttonName) {
-    this.buttonPressed = buttonName;
+    console.log(`[${this.title}#constructor]`);
   }
 
   ngOnInit() {
-    console.log('init "menu"');
+    console.log(`[${this.title}#ngOnInit]`);
   }
 
-  toggleMenu() {
-    this.menu.enable(true, 'mainMenu');
-    this.menu.toggle('mainMenu');
+  ionViewDidEnter() {
+    this.platform.ready().then((readySource) => {
+      console.log(`[${this.title}#ionViewDidEnter] platform.ready`, readySource);
+
+      this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+    });
+  }
+
+  defaultOrder() {
+    return 0;
+  }
+
+  updateView() {
+    console.log(`[${this.title}#updateView]`);
+    this.cdr.detectChanges();
+    this.app.updateView(this.title);
+  }
+
+  redirectTo(url: string) {
+    this.app.redirectTo(url, this.title);
+  }
+
+  youPressed(buttonName: any) {
+    this.buttonPressed = buttonName;
   }
 }
