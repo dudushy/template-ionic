@@ -1,54 +1,43 @@
 @import "/src/theme/variables.scss";
 
-#main-content {
-  margin-top: 15%;
-}
-
-ion-toolbar.menu-toolbar {
+ion-toolbar {
   --background: $wall-active;
   background-color: $wall-active;
+
+  ion-title {
+    color: $text-default;
+    text-align: center;
+  }
 }
 
-#menu-icon {
-  fill: $text-default;
-}
-
-ion-title.paganame {
-  color: $text-default;
-}
-
-ion-title.projectname {
-  color: $text-default;
+#user-grid {
   text-align: center;
-}
 
-ion-grid.user-grid {
-  text-align: center;
-}
+  #user-icon {
+    font-size: 5em;
+  }
 
-#user-icon {
-  font-size: 5em;
-}
-
-#user-name {
-  color: $wall-active;
+  #user-name {
+    color: $wall-active;
+  }
 }
 
 hr {
-  padding: .2em;
+  padding: 0.2em;
   background-color: $wall-default;
   border-radius: 30px;
 }
 
 .pageButton {
-  background-color: $wall-default !important;
-  color: $text-default;
-  padding: .5em;
+  padding: 0.5em;
   // margin-left: 1em;
   border-radius: 10px;
 }
-
-.pageButton:hover:active {
+.pageButton[isOn="false"] {
+  background-color: $wall-default !important;
+  color: $text-default;
+}
+.pageButton[isOn="true"] {
   background-color: $wall-active !important;
   color: $text-active;
 }
