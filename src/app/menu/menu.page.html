@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar class="menu-toolbar">
+<ion-header [attr.theme]="theme">
+  <ion-toolbar class="menu-toolbar" color="template-{{theme}}">
     <ion-buttons slot="start">
       <ion-button (click)="app.toggleMenu()">
         <ion-icon name="menu-sharp"></ion-icon>
@@ -12,7 +12,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [attr.theme]="theme">
   <ion-list>
     <ion-button color="primary" expand="block" (click)="youPressed('primary')">primary</ion-button>
 
@@ -33,5 +33,5 @@
     <ion-button color="light" expand="block" (click)="youPressed('light')">light</ion-button>
   </ion-list>
 
-  <ion-title>You pressed: {{buttonPressed}}</ion-title>
+  <ion-title color="light">You pressed: {{buttonPressed}}</ion-title>
 </ion-content>
