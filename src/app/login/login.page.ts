@@ -39,10 +39,10 @@ export class LoginPage implements OnInit {
     this.platform.ready().then((readySource) => {
       console.log(`[${this.title}#ionViewDidEnter] platform.ready`, readySource);
 
-      this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+      this.theme = this.storage.get('theme', this.title) == null ? 'dark' : this.storage.get('theme', this.title);
 
-      this.rememberLogin = this.storage.get('rememberLogin') == null ? false : this.storage.get('rememberLogin');
-      this.checkboxRememberLogin = this.storage.get('rememberLogin') == null ? false : this.storage.get('rememberLogin');
+      this.rememberLogin = this.storage.get('rememberLogin', this.title) == null ? false : this.storage.get('rememberLogin', this.title);
+      this.checkboxRememberLogin = this.storage.get('rememberLogin', this.title) == null ? false : this.storage.get('rememberLogin', this.title);
 
       this.login_email = null;
       this.login_password = null;
@@ -50,10 +50,10 @@ export class LoginPage implements OnInit {
       if (this.rememberLogin) {
         console.log(`[${this.title}#ionViewDidEnter] rememberLogin`, this.rememberLogin);
 
-        this.login_email = this.storage.get('login_email');
+        this.login_email = this.storage.get('login_email', this.title);
         console.log(`[${this.title}#ionViewDidEnter] login_email`, this.login_email);
 
-        this.login_password = this.storage.get('login_password');
+        this.login_password = this.storage.get('login_password', this.title);
         console.log(`[${this.title}#ionViewDidEnter] login_password`, this.login_password);
 
         this.login();
@@ -89,14 +89,14 @@ export class LoginPage implements OnInit {
       return;
     }
 
-    this.storage.set('rememberLogin', this.checkboxRememberLogin);
-    console.log(`[${this.title}#login] (STORAGE) rememberLogin`, this.storage.get('rememberLogin'));
+    this.storage.set('rememberLogin', this.checkboxRememberLogin, this.title);
+    console.log(`[${this.title}#login] (STORAGE) rememberLogin`, this.storage.get('rememberLogin', this.title));
 
-    this.storage.set('login_email', this.login_email);
-    this.storage.set('login_password', this.login_password);
+    this.storage.set('login_email', this.login_email, this.title);
+    this.storage.set('login_password', this.login_password, this.title);
 
-    this.storage.set('username', this.login_email);
-    console.log(`[${this.title}#login] (STORAGE) username`, this.storage.get('username'));
+    this.storage.set('username', this.login_email, this.title);
+    console.log(`[${this.title}#login] (STORAGE) username`, this.storage.get('username', this.title));
 
     this.app.showAlert('Login', 'Successfully logged in!');
     this.redirectTo('menu');
