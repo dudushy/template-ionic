@@ -18,7 +18,7 @@ export class SettingsPage implements OnInit {
   title = 'SettingsPage';
   theme: any = 'dark';
 
-  themeToggle: any = true;
+  isDark: any = true;
 
   constructor(
     public app: AppComponent,
@@ -38,7 +38,17 @@ export class SettingsPage implements OnInit {
     this.platform.ready().then((readySource) => {
       console.log(`[${this.title}#ionViewDidEnter] platform.ready`, readySource);
 
-      this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+      this.theme = this.storage.get('theme', this.title) == null ? 'dark' : this.storage.get('theme', this.title);
+      console.log(`[${this.title}#ionViewDidEnter] theme`, this.theme);
+
+      if (this.theme == 'light') {
+        this.isDark = false;
+      } else {
+        this.isDark = true;
+      }
+      console.log(`[${this.title}#ionViewDidEnter] isDark`, this.isDark);
+
+      this.updateView();
     });
   }
 
@@ -88,16 +98,34 @@ export class SettingsPage implements OnInit {
     const { role } = await alert.onDidDismiss();
     console.log(`[${this.title}#eraseStorage] role`, role);
 
+    this.theme = this.storage.get('theme', this.title) == null ? 'dark' : this.storage.get('theme', this.title);
+    console.log(`[${this.title}#eraseStorage] theme`, this.theme);
+
+    if (this.theme == 'light') {
+      this.isDark = false;
+    } else {
+      this.isDark = true;
+    }
+    console.log(`[${this.title}#eraseStorage] isDark`, this.isDark);
+
     this.updateView();
   }
 
   toggleTheme() {
-    console.log(`[${this.title}#toggleTheme] themeToggle`, this.themeToggle);
-    // this.themeToggle = !this.themeToggle;
-    this.themeToggle ? this.storage.set('theme', 'dark') : this.storage.set('theme', 'light');
+    console.log(`[${this.title}#toggleTheme] (BEFORE) isDark`, this.isDark);
+    console.log(`[${this.title}#toggleTheme] (BEFORE) theme`, this.theme);
 
-    this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
-    console.log(`[${this.title}#toggleTheme] theme`, this.theme);
+    if (this.theme == 'light') {
+      this.theme = 'dark';
+      this.isDark = true;
+    } else {
+      this.theme = 'light';
+      this.isDark = false;
+    }
+    this.storage.set('theme', this.theme, this.title);
+
+    console.log(`[${this.title}#toggleTheme] (AFTER) isDark`, this.isDark);
+    console.log(`[${this.title}#toggleTheme] (AFTER) theme`, this.theme);
 
     this.updateView();
   }
