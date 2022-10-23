@@ -33,6 +33,8 @@ export class AppComponent {
     this.platform.ready().then((readySource) => {
       console.log(`[${this.title}#constructor] readySource`, readySource);
 
+      this.theme = this.storage.get('theme', this.title) == null ? 'dark' : this.storage.get('theme', this.title);
+
       this.allPages = [];
       const allRoutes = this.router.config;
       for (const route of allRoutes) {
@@ -44,10 +46,10 @@ export class AppComponent {
       }
       console.log(`[${this.title}#ionViewDidEnter] allPages`, this.allPages);
 
-      this.currentPage = this.storage.get('last_page');
+      this.currentPage = this.storage.get('last_page', this.title);
       console.log(`[${this.title}#constructor] currentPage`, this.currentPage);
 
-      this.username = this.storage.get('username') == null ? 'Guest' : this.storage.get('username');
+      this.username = this.storage.get('username', this.title) == null ? 'Guest' : this.storage.get('username', this.title);
       console.log(`[${this.title}#constructor] username`, this.username);
 
       this.redirectTo(this.currentPage, this.title);
@@ -83,7 +85,7 @@ export class AppComponent {
   updateView(from: string) {
     console.log(`[${this.title}#updateView] from`, from);
 
-    this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+    this.theme = this.storage.get('theme', this.title) == null ? 'dark' : this.storage.get('theme', this.title);
 
     this.cdr.detectChanges;
   }
@@ -92,13 +94,13 @@ export class AppComponent {
     console.log(`[${this.title}#redirectTo] ${from} | url`, url);
     console.log(`[${this.title}#redirectTo] router.config`, this.router.config);
 
-    if (from === 'LoginPage') { this.username = this.storage.get('username') == null ? 'Guest' : this.storage.get('username'); }
+    if (from === 'LoginPage') { this.username = this.storage.get('username', this.title) == null ? 'Guest' : this.storage.get('username', this.title); }
 
     if (url == null) { url = 'login'; }
     this.router.navigateByUrl(`/${url}`);
 
     this.currentPage = url;
-    this.storage.set('last_page', url);
+    this.storage.set('last_page', url, this.title);
     console.log(`[${this.title}#redirectTo] current_url`, this.currentPage);
 
     // this.toggleMenu();
@@ -120,11 +122,11 @@ export class AppComponent {
   logout() {
     console.log(`[${this.title}#logout]`);
 
-    this.storage.set('username', null);
+    this.storage.set('username', null, this.title);
     this.username = 'Guest';
-    this.storage.set('login_email', null);
-    this.storage.set('login_password', null);
-    this.storage.set('rememberLogin', false);
+    this.storage.set('login_email', null, this.title);
+    this.storage.set('login_password', null, this.title);
+    this.storage.set('rememberLogin', null, this.title);
 
     this.updateView(this.title);
   }
