@@ -1,5 +1,5 @@
-<ion-header>
-  <ion-toolbar class="menu-toolbar">
+<ion-header [attr.theme]="theme">
+  <ion-toolbar class="menu-toolbar" color="template-{{theme}}">
     <ion-buttons slot="start">
       <ion-button (click)="app.toggleMenu()">
         <ion-icon name="menu-sharp"></ion-icon>
@@ -12,7 +12,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  HELLO
+<ion-content [attr.theme]="theme">
+  <p>HELLO</p>
   <ion-button color="danger">test</ion-button>
 </ion-content>
