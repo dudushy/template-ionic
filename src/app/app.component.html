@@ -1,11 +1,11 @@
 <ion-app>
   <ion-split-pane contentId="main-content">
     <ion-menu side="start" menuId="mainMenu" contentId="main-content">
-      <ion-toolbar translucent>
-        <ion-title>template-ionic</ion-title>
+      <ion-toolbar translucent color="template-{{theme}}">
+        <ion-title (click)="redirectAndCloseMenu('dev-menu')">template-ionic</ion-title>
       </ion-toolbar>
 
-      <ion-content>
+      <ion-content [attr.theme]="theme">
         <ion-button color="danger" expand="block" (click)="logout()" *ngIf="username != 'Guest'">
           log out
         </ion-button>
