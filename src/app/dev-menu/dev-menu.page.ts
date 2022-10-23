@@ -38,7 +38,7 @@ export class DevMenuPage implements OnInit {
     this.platform.ready().then((readySource) => {
       console.log(`[${this.title}#ionViewDidEnter] platform.ready`, readySource);
 
-      this.theme = this.storage.get('theme') == null ? 'dark' : this.storage.get('theme');
+      this.theme = this.storage.get('theme', this.title) == null ? 'dark' : this.storage.get('theme', this.title);
 
       this.allPages = [];
       const allRoutes = this.router.config;
