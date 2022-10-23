@@ -1,29 +1,11 @@
 @import "/src/theme/variables.scss";
 
-ion-toolbar.menu-toolbar {
-  --background: $wall-active;
-  background-color: $wall-active;
+ion-content {
+  ion-label {
+    background: none;
+  }
 
   ion-icon {
-    fill: $text-default;
+    background: none;
   }
-
-  ion-title {
-    color: $text-default;
-  }
-}
-
-.alerts {
-  --color: $wall-active;
-  color: $wall-active;
-}
-
-.alerts-cancel {
-  --background: $alerts-cancel;
-  background-color: $alerts-cancel;
-}
-
-.alerts-accept {
-  --background: $alerts-accept;
-  background-color: $alerts-accept;
 }
