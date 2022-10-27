@@ -122,6 +122,7 @@ export class AppComponent {
   logout() {
     console.log(`[${this.title}#logout]`);
 
+    //TODO ask logout
     this.storage.set('username', null, this.title);
     this.username = 'Guest';
     this.storage.set('login_email', null, this.title);
